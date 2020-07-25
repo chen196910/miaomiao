@@ -1,29 +1,20 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
+// 引入子组件
+// import Login from '../views/Login.vue'
+import User from "../views/user.vue";
+// 官网 : 在模块化工程中使用 VueRouter , 必须使用Vue.use()安装一下 (把路由当成vue的插件来使用)
+Vue.use(VueRouter);
 
-  const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
-
+//2 实例化路由
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
-})
+  routes: [
+    { path: "/", redirect: "/User" },
+    // { path: '/login', name: 'login', component: Login },
+    { path: "/user", name: "user", component: User },
+  ],
+});
 
-export default router
+export default router;
